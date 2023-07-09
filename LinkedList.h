@@ -29,6 +29,7 @@ public:
     ErrorCodes Find(int valTofind, Link const ** link);
     ErrorCodes FindPrev(Link const * link, Link const ** prev);
     ErrorCodes LastLink(Link const ** lastLink);
+    ErrorCodes Remove(Link* linkToRemove, bool isToFree);
     void Print();
 };
 

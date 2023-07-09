@@ -116,3 +116,24 @@ ErrorCodes LinkedList::LastLink(Link const ** lastLink)
 
     return SUCCESS;
 }
+
+ErrorCodes LinkedList::Remove(Link* linkToRemove, bool isToFree)
+{
+    if(linkToRemove == nullptr){
+        return INVALID_PARAM;
+    }
+
+    Link const* prev;
+    ErrorCodes status = FindPrev(linkToRemove, &prev);
+
+    if(status != SUCCESS){
+        return status;
+    }
+
+    ((Link*)prev)->next = linkToRemove->next;
+
+    if(isToFree)
+        free(linkToRemove);
+    
+    return SUCCESS;
+}
