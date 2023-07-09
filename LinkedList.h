@@ -26,6 +26,8 @@ public:
     ~LinkedList();
     void Insert(int val);
     void Append(int val);
+    ErrorCodes Find(int valTofind, Link const ** link);
+    ErrorCodes FindPrev(Link const * link, Link const ** prev);
     void Print();
 };
 

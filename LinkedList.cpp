@@ -61,6 +61,36 @@ void LinkedList::Append(int val)
 
     curr->next = newLink;
 }
+ErrorCodes LinkedList::FindPrev(Link const * link, Link const ** prev)
+{
+  Link * curr = head;
+
+    while(curr != nullptr)
+    {
+        if(curr->next == link){
+            *prev = curr;
+            return SUCCESS;
+        }
+        curr = curr->next;
+    }
+
+    return NO_SUCH_ELEMENT;
+}
+ErrorCodes LinkedList::Find(int valTofind, Link const ** link)
+{
+    Link * curr = head;
+
+    while(curr != nullptr)
+    {
+        if(curr->value == valTofind){
+            *link = curr;
+            return SUCCESS;
+        }
+        curr = curr->next;
+    }
+
+    return NO_SUCH_ELEMENT;
+}
 
 void LinkedList::Print()
 {
