@@ -17,6 +17,7 @@ class LinkedList
 {
 private:
     void FreeList(Link *head);
+    ErrorCodes Sort(Link * head);
 public:
     // member
     Link *head;
@@ -26,11 +27,19 @@ public:
     ~LinkedList();
     void Insert(int val);
     void Append(int val);
+
     ErrorCodes Find(int valTofind, Link const ** link);
     ErrorCodes FindPrev(Link const * link, Link const ** prev);
     ErrorCodes LastLink(Link const ** lastLink);
     ErrorCodes Remove(Link* linkToRemove, bool isToFree);
+    ErrorCodes SwapLinkValues(Link * a, Link * b);
+    ErrorCodes FindMinValueLink(Link** minValueLink);
+
+    ErrorCodes Sort();
+    ErrorCodes ToArray(int** outArray, size_t* outArraySize);
+
     size_t Length();
+
     void Print();
 };
 

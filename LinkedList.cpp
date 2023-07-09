@@ -41,18 +41,92 @@ size_t LinkedList::Length()
     return count;
 }
 
+ErrorCodes LinkedList::FindMinValueLink(Link** minValueLink)
+{
+    if(Length() == 0)
+    {
+        return NO_SUCH_ELEMENT;
+    }
+
+    int min = 1024*1024;
+    Link * curr = head->next;
+    Link *minLink;
+
+    while(curr != nullptr)
+    {
+        if(curr->value < min){
+            min = curr->value;
+            minLink = curr;
+        }
+
+        curr = curr->next;
+    }
+
+    *minValueLink = minLink;
+
+    return SUCCESS;
+}
+
+ErrorCodes LinkedList::Sort(Link * link)
+{
+    if (link->next == nullptr)
+		return SUCCESS;
+
+	Link* minValueLink;
+	FindMinValueLink(&minValueLink);
+	SwapLinkValues(link->next, minValueLink);
+
+	return Sort(link->next);
+}
+
+ErrorCodes LinkedList::Sort()
+{
+    return Sort(head);
+}
+
+
+ErrorCodes LinkedList::ToArray(int** outArray, size_t* outArraySize)
+{
+    /*
+        1.  get lenght of list
+        2.  iterate on list and copying value
+    
+    */
+   size_t len = Length();
+   *outArraySize = len;
+
+   if(len == 0){
+        *outArray = nullptr;
+        return SUCCESS;
+   }
+
+   *outArray = (int*)malloc(sizeof(int) * len);
+    int idx = 0;
+    Link * curr = head->next;
+    int * ptrToArray = (*outArray);
+
+    while(curr != nullptr)
+    {
+        ptrToArray[idx++] = curr->value;
+        curr = curr->next;
+    }
+
+    return SUCCESS;
+}
+
+
 ErrorCodes LinkedList::SwapLinkValues(Link * a, Link * b)
 {
     int tmp = a->value;
     a->value = b->value;
     b->value = tmp;
-    
+
     return SUCCESS;
 }
 
 LinkedList::~LinkedList()
 {
-    printf("I am the dtor !\n");
+    //printf("I am the dtor !\n");
     FreeList(head);
 }
 
