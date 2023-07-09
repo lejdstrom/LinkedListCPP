@@ -30,6 +30,7 @@ public:
     ErrorCodes FindPrev(Link const * link, Link const ** prev);
     ErrorCodes LastLink(Link const ** lastLink);
     ErrorCodes Remove(Link* linkToRemove, bool isToFree);
+    size_t Length();
     void Print();
 };
 

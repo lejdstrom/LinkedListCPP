@@ -31,6 +31,25 @@ void LinkedList::FreeList(Link * head)
     */
 }
 
+size_t LinkedList::Length()
+{
+    size_t count = 0;
+
+    for (Link * i = head->next; i != nullptr; i = i->next)
+        count++;
+    
+    return count;
+}
+
+ErrorCodes LinkedList::SwapLinkValues(Link * a, Link * b)
+{
+    int tmp = a->value;
+    a->value = b->value;
+    b->value = tmp;
+    
+    return SUCCESS;
+}
+
 LinkedList::~LinkedList()
 {
     printf("I am the dtor !\n");
@@ -117,7 +136,8 @@ ErrorCodes LinkedList::LastLink(Link const ** lastLink)
     return SUCCESS;
 }
 
-ErrorCodes LinkedList::Remove(Link* linkToRemove, bool isToFree)
+// param isTofree seems to be not needed 
+ErrorCodes LinkedList::Remove(Link* linkToRemove, bool isToFree = true)
 {
     if(linkToRemove == nullptr){
         return INVALID_PARAM;
