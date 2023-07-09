@@ -11,8 +11,10 @@ struct Link{
 
 class LinkedList
 {
+private:
+    void FreeList(Link *head);
 public:
-    Link head;
+    Link *head;
     LinkedList(/* args */);
     ~LinkedList();
 };
