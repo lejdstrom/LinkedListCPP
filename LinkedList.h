@@ -28,6 +28,7 @@ public:
     void Append(int val);
     ErrorCodes Find(int valTofind, Link const ** link);
     ErrorCodes FindPrev(Link const * link, Link const ** prev);
+    ErrorCodes LastLink(Link const ** lastLink);
     void Print();
 };
 

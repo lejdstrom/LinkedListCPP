@@ -103,3 +103,16 @@ void LinkedList::Print()
     }
     printf("null\n");
 }
+
+ErrorCodes LinkedList::LastLink(Link const ** lastLink)
+{
+    ErrorCodes res = FindPrev(nullptr, lastLink);
+
+    if(res != SUCCESS)
+        return res;
+
+    if(*lastLink == head) // mean empty list
+        return NO_SUCH_ELEMENT;
+
+    return SUCCESS;
+}
