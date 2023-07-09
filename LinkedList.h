@@ -4,20 +4,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct Link{
+class Link{
+public:
     int value;
-    struct Link * next;
+    Link * next;
 };
+
+typedef enum { SUCCESS, ALLOC_FAIL, NO_SUCH_ELEMENT, INVALID_PARAM, NOT_IMPLEMENTED } ErrorCodes;
+
 
 class LinkedList
 {
 private:
     void FreeList(Link *head);
 public:
+    // member
     Link *head;
-    LinkedList(/* args */);
+
+    // function
+    LinkedList();
     ~LinkedList();
     void Insert(int val);
+    void Append(int val);
     void Print();
 };
 

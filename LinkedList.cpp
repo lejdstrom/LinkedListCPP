@@ -1,9 +1,9 @@
 #include "LinkedList.h"
 
-LinkedList::LinkedList(/* args */)
+LinkedList::LinkedList()
 {
     head = (Link*)malloc(sizeof(Link));
-    head->value = 0;
+    head->value = -1;
     head->next = nullptr;
 }
 
@@ -13,6 +13,22 @@ void LinkedList::FreeList(Link * head)
         FreeList(head->next);
         free(head);
     }
+    // iterative free
+    /*
+    
+    Link * tmp = head;
+    Link * next = head;
+
+    while(next != nullptr)
+    {
+        tmp = next;
+        next = next->next;
+        free(tmp);
+    }
+
+    free(head);
+    
+    */
 }
 
 LinkedList::~LinkedList()
@@ -20,6 +36,7 @@ LinkedList::~LinkedList()
     FreeList(head);
 }
 
+// add to the begining
 void LinkedList::Insert(int val)
 {
     Link * newLink = (Link*)malloc(sizeof(Link));
@@ -27,6 +44,21 @@ void LinkedList::Insert(int val)
     newLink->next = head->next;
 
     head->next = newLink;
+}
+
+void LinkedList::Append(int val)
+{
+    Link * curr = head;
+    Link * newLink = (Link*)malloc(sizeof(Link));
+    newLink->value = val;
+    newLink->next = nullptr;
+    
+    while (curr->next != nullptr)
+    {
+        curr = curr->next;
+    }
+
+    curr->next = newLink;
 }
 
 void LinkedList::Print()
@@ -38,4 +70,5 @@ void LinkedList::Print()
         printf("%d ->", curr->value);
         curr = curr->next;
     }
+    puts("");
 }
