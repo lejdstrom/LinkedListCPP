@@ -17,6 +17,8 @@ public:
     Link *head;
     LinkedList(/* args */);
     ~LinkedList();
+    void Insert(int val);
+    void Print();
 };
 
 
