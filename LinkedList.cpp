@@ -33,6 +33,7 @@ void LinkedList::FreeList(Link * head)
 
 LinkedList::~LinkedList()
 {
+    printf("I am the dtor !\n");
     FreeList(head);
 }
 
@@ -67,8 +68,8 @@ void LinkedList::Print()
 
     while(curr != nullptr)
     {
-        printf("%d ->", curr->value);
+        printf("%d -> ", curr->value);
         curr = curr->next;
     }
-    puts("");
+    printf("null\n");
 }

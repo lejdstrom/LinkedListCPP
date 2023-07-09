@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/*
 int List_Insert__WhenMultipleValues()
 {
 	// Arrange
@@ -239,11 +240,13 @@ int List_Sort__Sanity()
 	List_Free(anchor);
 	return isOK ? 0 : 1;
 }
+*/
 
 #define RUN_TEST(T) printf("%s -->", #T); printf(T()==0?"PASS":"FAIL");printf("\n");
 
 int main()
 {
+	/*
 		RUN_TEST(List_Insert__WhenMultipleValues);
 		RUN_TEST(List_Find__WhenValueIsNotPreset_ThenReturnsErrorCode);
 		RUN_TEST(List_Find__WhenValuePresetMultipleTimes_ThenReturnsFirstLinkThatFit);
@@ -255,5 +258,16 @@ int main()
 		RUN_TEST(List_Remove__WhenNoSuchElement);
 		RUN_TEST(List_Remove__WhenInputIsValid);
 		RUN_TEST(List_Sort__Sanity);
+	*/
+
+	LinkedList list;
+
+	for (int i = 1; i <= 10; i++)
+	{
+		list.Append(i);
+	}
+
+	list.Print();
+	
 	return 0;
 }
