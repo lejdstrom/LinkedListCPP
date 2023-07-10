@@ -2,7 +2,7 @@
 
 LinkedList::LinkedList()
 {
-    head = (Link*)malloc(sizeof(Link));
+    head = new Link{};
     head->value = -1;
     head->next = nullptr;
 }
@@ -11,24 +11,8 @@ void LinkedList::FreeList(Link * head)
 {
     if(head != nullptr){
         FreeList(head->next);
-        free(head);
+        delete head;
     }
-    // iterative free
-    /*
-    
-    Link * tmp = head;
-    Link * next = head;
-
-    while(next != nullptr)
-    {
-        tmp = next;
-        next = next->next;
-        free(tmp);
-    }
-
-    free(head);
-    
-    */
 }
 
 size_t LinkedList::Length()
